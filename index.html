@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kretz – Kommer snart</title>
+<meta name="description" content="Kretz – alt klubben trenger, ett sted. Meld interesse for å bli pilotklubb.">
+<link rel="icon" type="image/png" href="assets/kretz-logo.png">
+<script src="./config.js"></script>
+<script>
+  // Serve React from this site instead of unpkg.com
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "vendor/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "vendor/react-dom.production.min.js"
+  };
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="./i18n.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #f6f8f3; color: #12261c; font-family: 'Instrument Sans', system-ui, sans-serif; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+    a { color: #12261c; text-decoration: none; }
+    a:hover { color: #3f8a55; }
+    *:focus-visible { outline: 2px solid #7ed191; outline-offset: 3px; border-radius: 999px; }
+    ::selection { background: #c9ecd0; }
+    @media (max-width: 720px) { .kz-nav-links { display: none; } }
+    @media (max-width: 1399px) { .kz-float { display: none !important; } }
+    @keyframes kzFloatA { 0%,100% { transform: translate(0,0) rotate(-1deg); } 50% { transform: translate(6px,-18px) rotate(1deg); } }
+    @keyframes kzFloatB { 0%,100% { transform: translate(0,0) rotate(1deg); } 50% { transform: translate(-8px,-14px) rotate(-1deg); } }
+    @keyframes kzFloatC { 0%,100% { transform: translate(0,0); } 50% { transform: translate(10px,-12px); } }
+    @keyframes kzFloatD { 0%,100% { transform: translate(0,0) rotate(0.5deg); } 50% { transform: translate(-6px,-20px) rotate(-1deg); } }
+    @media (prefers-reduced-motion: reduce) { .kz-float { animation: none !important; } }
+  </style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
+
+  <nav style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px clamp(20px, 5vw, 96px); border-bottom: 1px solid #e4eae0; background: #f6f8f3; position: relative; z-index: 2;">
+    <span style="display: flex; align-items: center; gap: 4px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em;">
+      <img src="assets/kretz-logo.png" alt="" width="56" height="56" style="display: block; width: 56px; height: 56px; margin: -8px 0;">
+      Kretz
+    </span>
+    <div class="kz-nav-links" style="display: flex; gap: 36px; font-size: 17px; color: #4a5a50; margin-left: auto;">
+      <a href="#klubb" style="color: #4a5a50;">{{ t.navClub }}</a>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <button type="button" onClick="{{ toggleLang }}" aria-label="{{ t.langAria }}" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border: 1.5px solid #12261c; border-radius: 999px; background: transparent; color: #12261c; font: inherit; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; cursor: pointer;" style-hover="background: #e9f6ec">{{ t.langBtn }}</button>
+      <a href="#varsle" style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; background: #7ed191; color: #12261c; border-radius: 999px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 17px;" style-hover="background: #6cc481">{{ t.navCta }}</a>
+    </div>
+  </nav>
+
+  <section id="top" style="position: relative; min-height: calc(100vh - 89px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 6vh, 72px) clamp(20px, 5vw, 96px); text-align: center; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 34% 55% at 14% 40%, rgba(126,209,145,0.55), transparent 70%), radial-gradient(ellipse 40% 60% at 92% 55%, rgba(244,215,140,0.6), transparent 70%), radial-gradient(ellipse 30% 45% at 50% 40%, rgba(180,225,190,0.55), transparent 70%);"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#b9c4ba 1.2px, transparent 1.3px); background-size: 40px 40px; opacity: 0.55; mask-image: linear-gradient(to bottom, black 60%, transparent 100%);"></div>
+    <div aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: min(90vw, 900px); aspect-ratio: 1; transform: translate(-50%, -52%); border: 1.5px solid rgba(126,209,145,0.45); border-radius: 50%; pointer-events: none;"></div>
+
+    <div style="position: relative; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+      <span style="display: inline-flex; align-items: center; gap: 12px; height: 44px; padding: 0 24px; border: 1.5px solid #9ad9a8; background: rgba(233,246,236,0.85); border-radius: 999px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2f6b40;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #7ed191; display: inline-block;"></span>
+        {{ t.pill }}
+      </span>
+      <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, min(8vw, 11vh), 104px); line-height: 0.98; letter-spacing: -0.045em; margin: clamp(20px, 3vh, 32px) 0 0;">
+        <span style="display: block;">{{ t.h1a }}</span>
+        <span style="display: block; color: #7ed191;">{{ t.h1b }}</span>
+      </h1>
+      <p style="font-size: clamp(17px, 1.8vw, 21px); line-height: 1.5; color: #4a5a50; max-width: 44ch; margin: clamp(20px, 3vh, 32px) 0 0;">{{ t.heroP }}</p>
+
+      <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: clamp(20px, 3.5vh, 36px); width: 100%; max-width: 620px;">
+                    <button type="button" onClick="{{ goToPilot }}" style="height: 56px; padding: 0 32px; border: 0; border-radius: 999px; background: #7ed191; color: #12261c; font: inherit; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px; cursor: pointer; box-shadow: 0 0 0 6px rgba(126,209,145,0.22), 0 0 40px 8px rgba(126,209,145,0.55), 0 12px 36px rgba(126,209,145,0.45); transition: box-shadow 0.25s, background 0.2s;" style-hover="background: #6cc481; box-shadow: 0 0 0 8px rgba(126,209,145,0.28), 0 0 60px 14px rgba(126,209,145,0.7), 0 14px 40px rgba(126,209,145,0.5);">{{ t.heroBtn }}</button>
+        </form>
+        <p style="font-size: 15px; color: #6b7a70; margin: 14px 0 0;">{{ t.heroNote }}</p>
+      </sc-if>
+      <sc-if value="{{ showDone }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 48px; padding: 32px 40px; border: 1.5px solid #9ad9a8; background: rgba(233,246,236,0.85); border-radius: 32px; max-width: 560px;">
+          <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em; margin: 0;">Klubben står på listen.</p>
+          <p style="font-size: 17px; line-height: 1.5; color: #4a5a50; margin: 12px 0 0;">Vi sender en beskjed til {{ email }} når Kretz åpner. Til da: ha det gøy i hallen.</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="funksjoner" style="padding: 100px clamp(20px, 5vw, 96px); background-image: linear-gradient(#e4eae0 1px, transparent 1px), linear-gradient(90deg, #e4eae0 1px, transparent 1px); background-size: 160px 160px; border-top: 1px solid #e4eae0;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <span style="display: block; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2f6b40;">{{ t.featKicker }}</span>
+      <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -0.035em; margin: 20px 0 48px; max-width: 18ch;">{{ t.featH2 }}</h2>
+      <div style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr) repeat(3, minmax(0,1fr)); gap: 16px; align-items: center;">
+        <div aria-hidden="true" style="position: relative; background: rgba(18,38,28,0.55); border-radius: 24px; padding: 20px; min-height: 200px; box-sizing: border-box; overflow: hidden; min-width: 0; align-self: center; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; backdrop-filter: blur(6px); mask-image: linear-gradient(to right, rgba(0,0,0,0.35), black 70%);">
+          <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 25%, rgba(126,209,145,0.45), transparent 60%); filter: blur(24px);"></div>
+          <div style="position: relative; filter: blur(7px); opacity: 0.7;">
+            <div style="width: 60%; height: 22px; background: #7ed191; border-radius: 6px;"></div>
+            <div style="width: 90%; height: 10px; background: rgba(246,248,243,0.5); border-radius: 5px; margin-top: 12px;"></div>
+            <div style="width: 72%; height: 10px; background: rgba(246,248,243,0.5); border-radius: 5px; margin-top: 8px;"></div>
+          </div>
+          <span style="position: absolute; top: 20px; left: 24px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(246,248,243,0.8);">{{ t.soon }}</span>
+        </div>
+        <div style="background: #ffffff; border: 1.5px solid #7ed191; border-radius: 28px; padding: clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; justify-content: space-between; gap: 20px; min-width: 0; min-height: 340px; align-self: stretch; box-sizing: border-box; box-shadow: 0 20px 60px rgba(18,38,28,0.10);">
+          <span style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; height: 36px; padding: 0 16px; border-radius: 999px; background: #e9f6ec; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f6b40;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #7ed191; display: inline-block;"></span>{{ t.wip }}</span>
+          <div>
+            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 34px); line-height: 1.04; letter-spacing: -0.03em; margin: 0;">{{ t.wipTitle }}</h3>
+            <p style="font-size: 16px; line-height: 1.55; color: #4a5a50; margin: 14px 0 0; max-width: 46ch; font-size: clamp(13px, 1.1vw, 16px);">{{ t.wipCopy }}</p>
+          </div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #e4eae0; border-radius: 24px; padding: clamp(12px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; min-width: 0;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f6b40;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #7ed191; display: inline-block;"></span>{{ t.ready }}</span>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(14px, 1.5vw, 22px); letter-spacing: -0.03em; margin: 0; white-space: nowrap;">{{ t.f1 }}</h3>
+          <p style="font-size: clamp(13px, 1.1vw, 15px); line-height: 1.5; color: #4a5a50; margin: 0;">{{ t.f1c }}</p>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #e4eae0; border-radius: 24px; padding: clamp(12px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; min-width: 0;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f6b40;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #7ed191; display: inline-block;"></span>{{ t.ready }}</span>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(14px, 1.5vw, 22px); letter-spacing: -0.03em; margin: 0; white-space: nowrap;">{{ t.f2 }}</h3>
+          <p style="font-size: clamp(13px, 1.1vw, 15px); line-height: 1.5; color: #4a5a50; margin: 0;">{{ t.f2c }}</p>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #e4eae0; border-radius: 24px; padding: clamp(12px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; min-width: 0;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f6b40;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #7ed191; display: inline-block;"></span>{{ t.ready }}</span>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(14px, 1.5vw, 22px); letter-spacing: -0.03em; margin: 0; white-space: nowrap;">{{ t.f3 }}</h3>
+          <p style="font-size: clamp(13px, 1.1vw, 15px); line-height: 1.5; color: #4a5a50; margin: 0;">{{ t.f3c }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="klubb" style="position: relative; padding: 120px clamp(20px, 5vw, 96px); border-top: 1px solid #e4eae0; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#b9c4ba 1.2px, transparent 1.3px); background-size: 40px 40px; opacity: 0.4;"></div>
+    <div aria-hidden="true" style="position: absolute; right: 8%; bottom: -8%; width: 300px; height: 300px; border-radius: 50%; border: 3px dotted rgba(214,196,120,0.55); pointer-events: none;"></div>
+    <div aria-hidden="true" class="kz-float" style="position: absolute; left: clamp(16px, 3vw, 64px); top: 12%; z-index: 0; display: flex; align-items: center; gap: 16px; padding: 18px 28px 18px 18px; background: #ffffff; border-radius: 26px; box-shadow: 0 18px 50px rgba(18,38,28,0.10); animation: kzFloatA 7s ease-in-out infinite;">
+      <span style="width: 56px; height: 56px; border-radius: 16px; background: #7ec78a; display: grid; place-items: center; color: #fff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em;">{{ t.fl1 }}</span><span style="font-size: 16px; color: #6b7a70;">{{ t.fl1s }}</span></span>
+    </div>
+    <div aria-hidden="true" class="kz-float" style="position: absolute; right: clamp(16px, 3vw, 64px); top: 20%; z-index: 0; display: flex; align-items: center; gap: 16px; padding: 18px 28px 18px 18px; background: #ffffff; border-radius: 26px; box-shadow: 0 18px 50px rgba(18,38,28,0.10); animation: kzFloatB 8s ease-in-out infinite 1s;">
+      <span style="width: 56px; height: 56px; border-radius: 16px; background: #e6c45a; display: grid; place-items: center; color: #fff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em;">{{ t.fl2 }}</span><span style="font-size: 16px; color: #6b7a70;">{{ t.fl2s }}</span></span>
+    </div>
+    <div aria-hidden="true" class="kz-float" style="position: absolute; left: clamp(8px, 2vw, 40px); bottom: 14%; z-index: 0; display: flex; align-items: center; gap: 16px; padding: 18px 28px 18px 18px; background: #ffffff; border-radius: 26px; box-shadow: 0 18px 50px rgba(18,38,28,0.10); animation: kzFloatC 9s ease-in-out infinite 0.5s;">
+      <span style="width: 56px; height: 56px; border-radius: 16px; background: #8b93e0; display: grid; place-items: center; color: #fff;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span>
+      <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em;">{{ t.fl3 }}</span><span style="font-size: 16px; color: #6b7a70;">{{ t.fl3s }}</span></span>
+    </div>
+    <div aria-hidden="true" class="kz-float" style="position: absolute; right: clamp(16px, 3vw, 64px); bottom: 8%; z-index: 0; display: flex; align-items: center; gap: 16px; padding: 18px 28px 18px 18px; background: #ffffff; border-radius: 26px; box-shadow: 0 18px 50px rgba(18,38,28,0.10); animation: kzFloatD 7.5s ease-in-out infinite 1.5s;">
+      <span style="width: 56px; height: 56px; border-radius: 16px; background: #12261c; display: grid; place-items: center; color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px;">!</span>
+      <span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em;">{{ t.fl4 }}</span><span style="font-size: 16px; color: #6b7a70;">{{ t.fl4s }}</span></span>
+    </div>
+    <div style="position: relative; z-index: 1; max-width: min(620px, max(520px, calc(100vw - 880px))); margin: 0 auto; text-align: center;">
+      <div>
+        <span style="display: block; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2f6b40;">{{ t.clubKicker }}</span>
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(34px, 4vw, 54px); line-height: 1.04; letter-spacing: -0.035em; margin: 20px 0 0;">{{ t.clubH2 }}</h2>
+        <p style="font-size: 18px; line-height: 1.55; color: #4a5a50; margin: 28px auto 0; max-width: 46ch;">{{ t.clubP }}</p>
+        <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.025em; margin: 28px 0 0; color: #3f8a55;">{{ t.clubQ }}</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 36px;">
+          <a href="#varsle" style="display: inline-flex; align-items: center; height: 56px; padding: 0 30px; border: 1.5px solid #12261c; border-radius: 999px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 17px;" style-hover="background: #e9f6ec">{{ t.apply }}</a>
+        </div>
+      </div>
+          </div>
+  </section>
+
+  <section id="varsle" style="padding: 0 clamp(20px, 5vw, 96px) 100px; margin-top: auto;">
+    <div style="max-width: 1200px; margin: 0 auto; background: #1a2a22; color: #f6f8f3; border-radius: 40px; padding: clamp(40px, 6vw, 80px); position: relative; overflow: hidden;">
+      <div aria-hidden="true" style="position: absolute; right: 22%; top: -32%; width: 48%; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid rgba(126,209,145,0.28); pointer-events: none;"></div>
+      <div aria-hidden="true" style="position: absolute; left: 38%; bottom: -14%; width: 22%; aspect-ratio: 1; border-radius: 50%; border: 3px dotted rgba(214,196,120,0.6); pointer-events: none;"></div>
+      <div style="position: relative; max-width: 900px;">
+        <span style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; color: #dfe8e0;">{{ t.ctaKicker }}</span>
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(34px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -0.035em; margin: 24px 0 0;">{{ t.ctaH2a }} <span style="color: #7ed191;">{{ t.ctaH2b }}</span></h2>
+        <p style="font-size: clamp(17px, 1.6vw, 22px); line-height: 1.55; color: #c5d0c7; margin: 24px 0 0; max-width: 46ch;">{{ t.ctaP }}</p>
+        <div style="margin-top: 48px; border: 1.5px solid rgba(246,248,243,0.14); background: rgba(246,248,243,0.04); border-radius: 28px; padding: clamp(28px, 3.5vw, 48px);">
+          <div>
+            <span style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: #b7c3ba;">{{ t.formKicker }}</span>
+            <sc-if value="{{ showPilotForm }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ submitPilot }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; margin-top: 20px;">
+                <label style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #b7c3ba;">{{ t.lClub }}</span>
+                  <input type="text" required="{{ true }}" placeholder="Vika IL" value="{{ pilot.klubb }}" onChange="{{ setPilotField.klubb }}" style="height: 54px; padding: 0 20px; border: 1.5px solid rgba(246,248,243,0.25); border-radius: 999px; background: rgba(246,248,243,0.06); font: inherit; font-size: 16px; color: #f6f8f3; box-sizing: border-box; width: 100%;" style-focus="border-color: #7ed191; outline: none;">
+                </label>
+                <label style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #b7c3ba;">{{ t.lSport }}</span>
+                  <input type="text" required="{{ true }}" placeholder="{{ t.phSport }}" value="{{ pilot.idrett }}" onChange="{{ setPilotField.idrett }}" style="height: 54px; padding: 0 20px; border: 1.5px solid rgba(246,248,243,0.25); border-radius: 999px; background: rgba(246,248,243,0.06); font: inherit; font-size: 16px; color: #f6f8f3; box-sizing: border-box; width: 100%;" style-focus="border-color: #7ed191; outline: none;">
+                </label>
+                                <label style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #b7c3ba;">{{ t.lEmail }}</span>
+                  <input type="email" required="{{ true }}" placeholder="{{ t.phEmail }}" value="{{ pilot.epost }}" onChange="{{ setPilotField.epost }}" style="height: 54px; padding: 0 20px; border: 1.5px solid rgba(246,248,243,0.25); border-radius: 999px; background: rgba(246,248,243,0.06); font: inherit; font-size: 16px; color: #f6f8f3; box-sizing: border-box; width: 100%;" style-focus="border-color: #7ed191; outline: none;">
+                </label>
+                <label style="display: flex; flex-direction: column; gap: 8px; grid-column: 1 / -1; min-width: 0;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #b7c3ba;">{{ t.lMsg }}</span>
+                  <textarea rows="3" placeholder="{{ t.phMsg }}" value="{{ pilot.melding }}" onChange="{{ setPilotField.melding }}" style="padding: 16px 20px; border: 1.5px solid rgba(246,248,243,0.25); border-radius: 20px; background: rgba(246,248,243,0.06); font: inherit; font-size: 16px; color: #f6f8f3; box-sizing: border-box; width: 100%; resize: vertical;" style-focus="border-color: #7ed191; outline: none;"></textarea>
+                </label>
+                <div style="grid-column: 1 / -1; display: flex; gap: 12px; flex-wrap: wrap;">
+                  <button type="submit" disabled="{{ pilotSending }}" style="height: 56px; padding: 0 30px; border: 0; border-radius: 999px; background: #7ed191; color: #12261c; font: inherit; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 17px; cursor: pointer;" style-hover="background: #6cc481">{{ pilotBtnLabel }}</button>
+                </div>
+                <sc-if value="{{ hasPilotError }}" hint-placeholder-val="{{ false }}">
+                  <p style="grid-column: 1 / -1; font-size: 15px; color: #f2a9a0; margin: 0;">{{ pilotError }}</p>
+                </sc-if>
+              </form>
+              <p style="font-size: 15px; line-height: 1.5; color: #b7c3ba; margin: 16px 0 0;">{{ t.formNote }} <a href="mailto:kontakt@kretz.no" style="color: #7ed191; font-weight: 600;" style-hover="color: #a8e3b4">kontakt@kretz.no</a>.</p>
+            </sc-if>
+            <sc-if value="{{ showPilotDone }}" hint-placeholder-val="{{ false }}">
+              <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 20px 0 0;">{{ t.thanks }}</p>
+              <p style="font-size: 16px; line-height: 1.5; color: #c5d0c7; margin: 10px 0 0;">{{ t.thanksP1 }} {{ pilot.epost }} {{ t.thanksP2 }}</p>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 32px clamp(20px, 5vw, 96px); border-top: 1px solid #e4eae0; font-size: 15px; color: #6b7a70;">
+    <span style="display: flex; align-items: center; gap: 2px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; color: #12261c; font-size: 22px;"><img src="assets/kretz-logo.png" alt="" width="44" height="44" style="width: 44px; height: 44px; margin: -8px 0;"> Kretz</span>
+    <span>{{ t.footer }}</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;language&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;no&quot;,&quot;en&quot;],&quot;default&quot;:&quot;no&quot;,&quot;tsType&quot;:&quot;'no' | 'en'&quot;,&quot;section&quot;:&quot;Språk&quot;,&quot;description&quot;:&quot;Preview language (the NO/EN button overrides at runtime)&quot;},&quot;previewSubmitted&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;State&quot;}}">
+class Component extends DCLogic {
+  state = { email: '', done: false, copied: false };
+  copyEmail = () => {
+    const done = () => { this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText('kontakt@kretz.no').then(done, done); else done();
+  };
+  componentDidMount() {
+    try { const l = localStorage.getItem('kretz-lang'); if (l === 'en' || l === 'no') this.setState({ lang: l }); } catch (e) {}
+  }
+  renderVals() {
+    const lang = this.state.lang || this.props.language || 'no';
+    const dict = window.KRETZ_I18N || {};
+    const t = dict[lang] || dict.no || {};
+    const toggleLang = () => { const next = lang === 'no' ? 'en' : 'no'; this.setState({ lang: next }); try { localStorage.setItem('kretz-lang', next); } catch (e) {} };
+    const done = this.props.previewSubmitted ?? this.state.done;
+    const pilot = { klubb: '', idrett: '', antall: '', epost: '', melding: '', ...(this.state.pilot || {}) };
+    const setPilotField = {};
+    for (const k of Object.keys(pilot)) setPilotField[k] = (e) => this.setState(s => ({ pilot: { ...(s.pilot || {}), [k]: e.target.value } }));
+    return {
+      t, toggleLang,
+      email: this.state.email,
+      showForm: !done,
+      showDone: done,
+      copyEmail: this.copyEmail,
+      goToPilot: (e) => { e.preventDefault(); const el = document.getElementById('varsle'); if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' }); const inp = el.querySelector('input[type=email]'); if (inp) setTimeout(() => inp.focus({ preventScroll: true }), 500); } },
+      pilot,
+      showPilotForm: !this.state.pilotDone,
+      showPilotDone: !!this.state.pilotDone,
+      setPilotField,
+      submitPilot: (e) => {
+        e.preventDefault();
+        if (!pilot.klubb || !pilot.idrett || !pilot.epost) return;
+        const melding = (pilot.melding || '').trim() || '–';
+        const body = `Hei team Kretz!!\n\nEn ny klubb har meldt interesse for å bli pilotklubb i Kretz.\n\nKlubb: ${pilot.klubb}\nIdrett: ${pilot.idrett}\nE-post: ${pilot.epost}\nMelding: ${melding}\n\nNeste steg: Ta kontakt innen 48 timer og avtal et kort møte.\n\nHeia Kretz.`;
+        const subject = 'Ny pilotklubb: ' + pilot.klubb;
+        const cfg = (window.KRETZ_CONFIG && window.KRETZ_CONFIG.emailjs) || {};
+        if (!cfg.publicKey || !cfg.serviceId || !cfg.templateId) {
+          window.location.href = `mailto:kontakt@kretz.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          this.setState({ pilotDone: true });
+          return;
+        }
+        this.setState({ pilotSending: true, pilotError: '' });
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            service_id: cfg.serviceId,
+            template_id: cfg.templateId,
+            user_id: cfg.publicKey,
+            template_params: { subject, klubbnavn: pilot.klubb, idrett: pilot.idrett, epost: pilot.epost, melding, message: body },
+          }),
+        })
+          .then(r => { if (!r.ok) return r.text().then(t => { throw new Error(t || ('HTTP ' + r.status)); }); this.setState({ pilotDone: true, pilotSending: false }); })
+          .catch((err) => { console.error('Kretz form:', err); this.setState({ pilotSending: false, pilotError: true }); });
+      },
+      pilotSending: !!this.state.pilotSending,
+      pilotError: this.state.pilotError ? t.error : '',
+      hasPilotError: !!this.state.pilotError,
+      pilotBtnLabel: this.state.pilotSending ? t.sending : t.apply,
+      copyLabel: this.state.copied ? 'Kopiert!' : 'Kopier e-postadressen',
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      submit: (e) => { e.preventDefault(); if (this.state.email) this.setState({ done: true }); },
+      focusEmail: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); const el = document.querySelector('input[type=email]'); if (el) setTimeout(() => el.focus(), 400); },
+    };
+  }
+}
+</script>
+</body>
+</html>
