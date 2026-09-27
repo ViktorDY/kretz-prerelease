@@ -3,8 +3,8 @@
 // If any value is empty, the form falls back to opening the visitor's mail app.
 window.KRETZ_CONFIG = {
   emailjs: {
-    publicKey: '',   // Account → General → Public Key
-    serviceId: '',   // Email Services → Service ID
-    templateId: '',  // Email Templates → Template ID
+    publicKey: 'W-8E0uz-z0I4sHxbN',   // Account → General → Public Key
+    serviceId: 'default_service',   // 'default_service' = the service marked as default in Email Services
+    templateId: 'template_xp9r8ed',  // Email Templates → Template ID
   },
 };
