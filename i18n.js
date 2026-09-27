@@ -26,7 +26,7 @@ window.KRETZ_I18N = {
   },
   en: {
     langBtn: 'NO', langAria: 'Bytt til norsk', navClub: 'For the club', navCta: 'Become a pilot',
-    pill: 'Coming soon!', h1a: 'Everything your club needs.', h1b: 'One place.',
+    pill: 'Kommer snart!', h1a: 'Everything your club needs.', h1b: 'One place.',
     heroP: 'Less paperwork, more playing time. We are building a platform tailored to exactly what your club needs.',
     heroBtn: 'Put your club on the list', heroNote: 'You will receive more information before deciding whether to become a pilot club.',
     featKicker: 'What Kretz does', featH2: 'What we have today. And what we are building now.', soon: 'Revealed soon', wip: 'In progress', ready: 'Ready',
