@@ -4,7 +4,7 @@
 window.KRETZ_CONFIG = {
   emailjs: {
     publicKey: 'W-8E0uz-z0I4sHxbN',   // Account → General → Public Key
-    serviceId: 'default_service',   // 'default_service' = the service marked as default in Email Services
+    serviceId: 'service_myqh6vk',   // 'default_service' = the service marked as default in Email Services
     templateId: 'template_xp9r8ed',  // Email Templates → Template ID
   },
 };
